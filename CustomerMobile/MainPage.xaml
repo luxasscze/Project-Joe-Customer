@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomerMobile.MainPage"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             BackgroundColor="Black"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             
+             >
+
+    <Grid>
+        <ff:CachedImage x:Name="backgroundImage"  Aspect="AspectFill" Opacity="0.4"/>
+        <StackLayout x:Name="mainLayout">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <!-- HEADER FRAME -->
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0" Opacity="0.7" x:Name="headerFrame" Grid.Row="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition Width="0.4*"/>
+                        </Grid.ColumnDefinitions>
+                        <ff:CachedImage x:Name="iconImage" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" HeightRequest="64"/>
+                        <Label Text="COMPANY_TEXT" HorizontalTextAlignment="End" TextColor="CadetBlue" FontSize="40" Grid.Row="0" Grid.Column="1" x:Name="companyCaptionText" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                        <Label Text="SUB_CAPTION" FontSize="18" TextColor="White" HorizontalOptions="EndAndExpand" Grid.Row="1" Grid.Column="1" x:Name="subCaptionText" HorizontalTextAlignment="End" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                        <Button Text="▲" Grid.Row="2" Grid.Column="0" BackgroundColor="Black" TextColor="White" BorderColor="IndianRed" BorderWidth="0" HorizontalOptions="Center" x:Name="hideButton" FontSize="14" IsVisible="false" Clicked="OnHideClicked" FontFamily="brewery" VerticalOptions="End"/>
+                        <Button Text="Logout" Grid.Row="2" Grid.Column="1" BackgroundColor="Black" TextColor="#734c9f" BorderColor="#734c9f" BorderWidth="1" HorizontalOptions="End" x:Name="logoutButton" FontSize="14" IsVisible="False" Clicked="OnLogoutClicked" FontFamily="brewery"/>
+                        <Button Text="Settings" Grid.Row="2" Grid.Column="2" BackgroundColor="Black" TextColor="CadetBlue" BorderColor="CadetBlue" BorderWidth="1" HorizontalOptions="Start" x:Name="settingsButton" FontSize="14" IsVisible="False" Clicked="OnSettingsClicked" FontFamily="brewery"/>
+                    </Grid>
+                </Frame>
+
+                <!-- SHOW HEADER BUTTON-->
+                <Button Text="MENU ▼" HorizontalOptions="Center" FontSize="18" BackgroundColor="Black" TextColor="CadetBlue" FontFamily="brewery" Clicked="OnShowMenuClicked" IsVisible="false" x:Name="showMenuButton" VerticalOptions="Start" Grid.Row="0" RotationX="15"/>
+            </Grid>
+
+            <!-- LOGIN FRAME -->
+            <Frame BackgroundColor="#000" CornerRadius="20" Margin="20,0,20,0" VerticalOptions="CenterAndExpand" x:Name="loginFrame" Opacity="0.8">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="LOGIN" TextColor="White" HorizontalOptions="Center" FontSize="32" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                    <Entry x:Name="emailText" Placeholder="Email" Grid.Row="1" PlaceholderColor="Gray" TextColor="White" Keyboard="Email" WidthRequest="200" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="brewery" FontSize="18"/>
+                    <Entry x:Name="passwordText" Placeholder="Password" Grid.Row="2" PlaceholderColor="Gray" TextColor="White" Keyboard="Text" WidthRequest="200" IsPassword="True" Grid.Column="0" Grid.ColumnSpan="2" FontFamily="brewery" FontSize="18"/>
+                    <Switch Grid.Row="3" Grid.Column="0" HorizontalOptions="End" IsToggled="True" x:Name="keepMeLoggedSwitch" OnColor="CadetBlue" ThumbColor="#734c9f"/>
+                    <Label Text="Save login" Grid.Row="3" Grid.Column="1" TextColor="White" VerticalOptions="Center" HorizontalOptions="Start" FontFamily="brewery" FontSize="18"/>
+                    <Button Text="LOGIN" Grid.Row="4" Grid.Column="0" BackgroundColor="White" Clicked="OnLoginClicked" CornerRadius="5" FontFamily="brewery" FontSize="18" FontAttributes="Bold"/>
+                    <Button Text="JOIN US" Grid.Row="4" Grid.Column="1" BackgroundColor="White" Clicked="OnRegisterClicked" CornerRadius="5" FontFamily="brewery" FontSize="18" FontAttributes="Bold"/>
+                    <Button Text="FORGOT PASSWORD" Grid.Row="5" Grid.Column="0" BackgroundColor="Black" TextColor="CadetBlue" BorderColor="CadetBlue" BorderWidth="1" CornerRadius="5" Clicked="OnFacebookLoginClicked" FontSize="14" FontFamily="brewery" FontAttributes="Bold"/>
+                    <Button Text="GUEST" Grid.Row="5" Grid.Column="1" BackgroundColor="White" CornerRadius="5" FontFamily="brewery" FontSize="18" FontAttributes="Bold"/>
+                </Grid>
+            </Frame>
+            
+            <!-- ACTIVE ORDER FRAME-->
+            <Frame x:Name="activeOrderFrame" BackgroundColor="Black" Opacity="0.7" IsVisible="false" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" Margin="20,0,20,0">
+                
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Label Text="CURRENT ORDER" FontSize="24" TextColor="CadetBlue" HorizontalOptions="Center" VerticalOptions="Center" FontFamily="brewery" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        <ff:CachedImage  x:Name="orderProgressImage" Source="OrderProgress1.png" Aspect="Fill" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,10" FadeAnimationEnabled="True" FadeAnimationForCachedImages="True" FadeAnimationDuration="1000"/>
+                        <Label x:Name="orderIdText" FontSize="28" TextColor="White" FontFamily="brewery" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Grid.Column="0"/>
+                        <Label x:Name="orderCreatedText" FontSize="16" TextColor="White" FontFamily="brewery" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                        <Label x:Name="orderTotalText" FontSize="16" TextColor="White" FontFamily="brewery" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Grid.Column="0"/>
+                    <Label x:Name="orderStatusText" FontSize="20" TextColor="#734c9f" FontFamily="brewery" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="3" Grid.Column="1"/>
+                        <!--<Button Text="TRACK" FontFamily="brewery" FontSize="20" BackgroundColor="DarkOrange" TextColor="Black" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Center" Margin="0,20,0,0"/> -->
+                    <maps:Map x:Name="trackMap" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" HeightRequest="200">
+                        
+                    </maps:Map>
+                    <Label Text="Estimated Delivery Time" FontSize="24" TextColor="DimGray" FontFamily="brewery" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,30,0,0"/>
+                        <Label x:Name="etaText" Text="14:55" FontSize="32" TextColor="CadetBlue" FontFamily="brewery" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
+                    </Grid>
+                
+            </Frame>
+            
+            
+            <!-- PAYMENT FRAME-->
+            <Frame x:Name="paymentFrame" BackgroundColor="Black" Opacity="0.7" IsVisible="false" CornerRadius="20" HorizontalOptions="Center" VerticalOptions="Center" Margin="20,0,20,0">
+                <Label Text="PAYMENT FRAME" TextColor="White" FontFamily="brewery" FontSize="20" HorizontalOptions="Center"/>
+            </Frame>
+             
+            <!-- THANKS FOR THE ORDER -->
+            <Frame x:Name="thanksFrame" BackgroundColor="Black" Opacity="0.7" CornerRadius="20" IsVisible="false" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="20,0,20,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Text="ENJOY YOUR MEAL!" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" TextColor="CadetBlue" FontSize="24" FontFamily="brewery" HorizontalOptions="Center"/>
+                    <Label Text="How was your order?" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" TextColor="White" FontSize="18" FontFamily="brewery" HorizontalOptions="Center" Margin="0,20,0,20"/>
+                    <ImageButton x:Name="star1Button" Source="Star_BW.png" Grid.Row="2" Grid.Column="0" BackgroundColor="Transparent" HeightRequest="32" Clicked="OnStar1Clicked"/>
+                    <ImageButton x:Name="star2Button" Source="Star_BW.png" Grid.Row="2" Grid.Column="1" BackgroundColor="Transparent" HeightRequest="32" Clicked="OnStar2Clicked"/>
+                    <ImageButton x:Name="star3Button" Source="Star_BW.png" Grid.Row="2" Grid.Column="2" BackgroundColor="Transparent" HeightRequest="32" Clicked="OnStar3Clicked"/>
+                    <ImageButton x:Name="star4Button" Source="Star_BW.png" Grid.Row="2" Grid.Column="3" BackgroundColor="Transparent" HeightRequest="32" Clicked="OnStar4Clicked"/>
+                    <ImageButton x:Name="star5Button" Source="Star_BW.png" Grid.Row="2" Grid.Column="4" BackgroundColor="Transparent" HeightRequest="32" Clicked="OnStar5Clicked"/>
+                    <Entry x:Name="scoreText" Placeholder="Comment" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" FontFamily="brewery" TextColor="White" PlaceholderColor="Gray"/>
+
+                    <Button Text="Menu" BackgroundColor="CadetBlue" TextColor="Black" FontFamily="brewery" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" HorizontalOptions="Center" Clicked="OnThanksMenuClicked" Margin="0,50,0,0"/>
+                </Grid>
+            </Frame>
+            
+            
+            <!-- MENU FRAME -->
+            <Frame BackgroundColor="Transparent" CornerRadius="20" Margin="0,0,0,0" VerticalOptions="StartAndExpand" x:Name="MenuFrame" IsVisible="False" Opacity="0.9">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>                        
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Button Text="FOOD" Grid.Row="0" Grid.Column="0" BackgroundColor="Black" CornerRadius="5" TextColor="CadetBlue" BorderColor="CadetBlue" BorderWidth="1" Clicked="OnFoodClicked" x:Name="foodButton" FontFamily="brewery" FontSize="18" RotationY="0" Margin="0,0,0,0"/>
+                    <Button Text="DRINK" Grid.Row="0" Grid.Column="1" BackgroundColor="Black" CornerRadius="5" TextColor="#734c9f" BorderColor="#734c9f" BorderWidth="1" Clicked="OnDrinkClicked" x:Name="drinkButton" FontFamily="brewery" FontSize="18" RotationY="0" Margin="0,0,0,0"/>
+                
+                
+                    <ListView ItemsSource="{Binding Foods}" HasUnevenRows="True" RotationX="5" ItemTapped="OnMenuItemSelected" x:Name="menuList" BackgroundColor="Transparent" SeparatorColor="DarkSlateGray" RefreshControlColor="#555" Grid.Row="1" Grid.ColumnSpan="2">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="15">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <ff:CachedImage Grid.RowSpan="3" Source="{Binding Image}" Aspect="AspectFill" HeightRequest="80" WidthRequest="80" Grid.Row="0" Grid.Column="0">
+                                            <ff:CachedImage.Transformations>
+                                                <ffTransformations:RoundedTransformation Radius="200" />
+                                            </ff:CachedImage.Transformations>
+                                        </ff:CachedImage>
+                                        <Label Grid.Column="1" Text="{Binding Name}" FontAttributes="Bold" FontSize="18" Grid.ColumnSpan="2" Grid.RowSpan="3" TextColor="White" FontFamily="brewery">
+
+                                        </Label>                                       
+                                       
+                                        <Label Grid.Column="2" Text="{Binding DisplayPrice}" FontSize="16" FontAttributes="Bold" Grid.Row="2" Grid.RowSpan="2" TextColor="CadetBlue" VerticalOptions="Center" x:Name="priceText" FontFamily="brewery">
+
+                                        </Label>
+                                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"                          
+                                                Text="{Binding Category}" VerticalOptions="Start" Margin="0,10,0,0" FontSize="12" TextColor="CadetBlue" HorizontalOptions="Start" FontFamily="brewery">
+                                        </Label>
+                                        <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"                          
+                                                Text="{Binding ShortDescription}" VerticalOptions="Start" Margin="0,30,0,0" FontSize="12" TextColor="White" FontFamily="brewery">
+                                        </Label>
+
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <Button Text="MY ORDER" RotationX="5" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Margin="40,0,40,0" BackgroundColor="Black" CornerRadius="5" TextColor="CadetBlue" BorderColor="CadetBlue" BorderWidth="1" Clicked="OnMyOrderClicked" x:Name="myOrderButton" FontFamily="brewery" FontSize="18"/>
+                </Grid>
+
+            </Frame>
+            
+            <!-- INFO FRAME f.e. suspended account info, etc... -->
+            <Frame BackgroundColor="#000" CornerRadius="20" Margin="20,0,20,0" VerticalOptions="CenterAndExpand" x:Name="InfoFrame" IsVisible="False" Opacity="0.7">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="infoText" TextColor="CadetBlue" VerticalOptions="EndAndExpand" FontSize="18" HorizontalOptions="Center" Grid.Row="0" FontFamily="brewery"/>
+                    <Button x:Name="infoButton" Grid.Row="1" FontSize="18" BackgroundColor="Black" BorderColor="White" BorderWidth="1" TextColor="White" Text="ACTIVATE >>>" Margin="0,20,0,0" Clicked="OnActivateAccountClicked" FontFamily="brewery"/>                   
+                </Grid>
+
+            </Frame>
+            
+            
+            <!-- TIER FRAME -->
+            <Frame BackgroundColor="#000" CornerRadius="0" Margin="0,0,0,0" VerticalOptions="EndAndExpand" x:Name="TierFrame" IsVisible="False" Opacity="0.7" AnchorX="0" AnchorY="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Label x:Name="tierText" TextColor="White" Grid.Column="0" FontSize="20" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                    <ProgressBar x:Name="tierProgressBar" ProgressColor="GreenYellow" Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#001100" InputTransparent="False"/>
+                    <Label Text="Tier up for discounts and more! More orders, higher tier." TextColor="White" Grid.Column="1" VerticalOptions="Center" x:Name="tierDescText" FontFamily="brewery"/>
+                </Grid>
+            </Frame>
+
+            
+            <!--<Frame BackgroundColor="#000" VerticalOptions="EndAndExpand" HeightRequest="50">
+            <Label Text="Made by Lukas Slivka 2020-2021" TextColor="White" HorizontalOptions="Center" VerticalOptions="End"/>
+        </Frame>-->
+
+
+
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

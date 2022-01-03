@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomerMobile.Settings"
+             BackgroundColor="#000">
+    <ContentPage.Content>
+        <Grid>
+            <Image x:Name="bgImage" Aspect="AspectFill" Opacity="0.7"/>
+            <StackLayout>
+                
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0" Opacity="0.5" RotationY="-15" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+                    <Label Text="SETTINGS" FontSize="24" HorizontalOptions="End" TextColor="White" FontFamily="brewery"/>
+                </Frame>
+                
+                <Frame BackgroundColor="Transparent" Opacity="0.7" Margin="0,-5,0,0" CornerRadius="0">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Delivery address" RotationX="-20" Grid.Row="0" Grid.Column="0" BorderColor="Black" BorderWidth="1" BackgroundColor="White" TextColor="Black" CornerRadius="10" Clicked="OnDeliveryAddressClicked" x:Name="deliveryAddressButton" FontFamily="brewery" Margin="5" FontSize="18"/>
+                        <Button Text="Contact info" RotationX="-20" Grid.Row="0" Grid.Column="1" BorderColor="White" BorderWidth="1" BackgroundColor="Black" TextColor="White" CornerRadius="10" Clicked="OnContactInfoClicked" x:Name="contactInfoButton" FontFamily="brewery" Margin="5" FontSize="18"/>
+                        <Button Text="Password" RotationX="20" Grid.Row="1" Grid.Column="0" BorderColor="White" BorderWidth="1" BackgroundColor="Black" TextColor="White" CornerRadius="10" Clicked="OnPasswordClicked" x:Name="passwordButton" FontFamily="brewery" Margin="5" FontSize="18"/>
+                        <Button Text="Account" RotationX="20" Grid.Row="1" Grid.Column="1" BorderColor="White" BorderWidth="1" BackgroundColor="Black" TextColor="White" CornerRadius="10" Clicked="OnAccountClicked" x:Name="accountButton" FontFamily="brewery" Margin="5" FontSize="18"/>
+                        
+                    </Grid>
+                </Frame>
+
+                <Grid>
+                    <Frame x:Name="settingsDeliveryAddressFrame" BackgroundColor="Black" CornerRadius="20" Margin="20,40,20,0" Opacity="0.5" Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="DELIVERY ADDRESS" FontSize="24" TextColor="White" HorizontalOptions="Center" Grid.Row="0" FontFamily="brewery"/>
+                            <Entry x:Name="address1Text" Grid.Row="1" TextColor="White" PlaceholderColor="Gray" Placeholder="Address line 1" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="address2Text" Grid.Row="2" TextColor="White" PlaceholderColor="Gray" Placeholder="Address line 2" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="address3Text" Grid.Row="3" TextColor="White" PlaceholderColor="Gray" Placeholder="Address line 3" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="postCodeText" Grid.Row="4" TextColor="White" PlaceholderColor="Gray" Placeholder="Post code" Keyboard="Text" FontFamily="brewery"/>
+                            <Button Text="UPDATE" BackgroundColor="Black" TextColor="White" BorderColor="White" BorderWidth="1" Grid.Row="5" Clicked="OnAddressUpdateClicked" x:Name="addressUpdateButton" CornerRadius="10" FontFamily="brewery" FontSize="18"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame x:Name="settingsContactInfoFrame" BackgroundColor="Black" CornerRadius="20" Margin="20,40,20,0" Opacity="0.5" Grid.Row="0" IsVisible="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>                                
+                            </Grid.RowDefinitions>
+                            <Label Text="CONTACT INFO" FontSize="24" TextColor="White" HorizontalOptions="Center" Grid.Row="0" FontFamily="brewery"/>
+                            <Entry x:Name="emailText" Grid.Row="1" TextColor="White" PlaceholderColor="Gray" Placeholder="Email" Keyboard="Email" IsReadOnly="True" FontFamily="brewery"/>
+                            <Entry x:Name="phoneText" Grid.Row="2" TextColor="White" PlaceholderColor="Gray" Placeholder="Phone" Keyboard="Telephone" FontFamily="brewery"/>
+                            <Button Text="UPDATE" BackgroundColor="Black" TextColor="White" BorderColor="White" BorderWidth="1" Grid.Row="5" Clicked="OnContactUpdateClicked" x:Name="contactUpdateButton" CornerRadius="10" FontFamily="brewery" FontSize="18"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame x:Name="settingsPasswordFrame" BackgroundColor="Black" CornerRadius="20" Margin="20,40,20,0" Opacity="0.5" Grid.Row="0" IsVisible="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Label Text="PASSWORD" FontSize="24" TextColor="White" HorizontalOptions="Center" Grid.Row="0" FontFamily="brewery"/>
+                            <Entry x:Name="oldPasswordText" Grid.Row="1" TextColor="White" PlaceholderColor="Gray" Placeholder="Old password" Keyboard="Text" IsPassword="True" FontFamily="brewery"/>
+                            <Entry x:Name="newPasswordText" Grid.Row="2" TextColor="White" PlaceholderColor="Gray" Placeholder="New password" Keyboard="Text" IsPassword="True" FontFamily="brewery"/>
+                            <Entry x:Name="newPasswordRetypedText" Grid.Row="3" TextColor="White" PlaceholderColor="Gray" Placeholder="Re-type new password" Keyboard="Text" IsPassword="True" FontFamily="brewery"/>
+                            <Label Text="Password do not match!" TextColor="IndianRed" Grid.Row="4" IsVisible="False" x:Name="notMatchText" FontFamily="brewery"/>
+                            <Button Text="UPDATE" BackgroundColor="Black" TextColor="White" BorderColor="White" BorderWidth="1" Grid.Row="5" Clicked="OnPasswordUpdateClicked" x:Name="passwordUpdateButton" CornerRadius="10" FontFamily="brewery" FontSize="18"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame x:Name="settingsAccountFrame" BackgroundColor="Black" CornerRadius="20" Margin="20,40,20,0" Opacity="0.5" Grid.Row="0" IsVisible="False">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>                                
+                            </Grid.RowDefinitions>
+                            <Label Text="ACCOUNT" FontSize="24" TextColor="White" HorizontalOptions="Center" Grid.Row="0" FontFamily="brewery"/>
+                            <Entry x:Name="firstNameText" Grid.Row="1" TextColor="White" PlaceholderColor="Gray" Placeholder="First name" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="SurnameText" Grid.Row="2" TextColor="White" PlaceholderColor="Gray" Placeholder="Surname" Keyboard="Text" FontFamily="brewery"/>
+                            <Button Text="LEGAL INFO" BackgroundColor="Black" Grid.Row="4" BorderColor="White" TextColor="White" BorderWidth="1" CornerRadius="10" FontFamily="brewery" FontSize="18" Clicked="OnLegalInfoClicked"/>
+                            <Button Text="DELETE ACCOUNT" BackgroundColor="Black" Grid.Row="5" BorderColor="IndianRed" TextColor="IndianRed" BorderWidth="1" CornerRadius="10" FontFamily="brewery" FontSize="18"/>
+                            <Button Text="UPDATE" BackgroundColor="Black" TextColor="White" BorderColor="White" BorderWidth="1" Grid.Row="3" Clicked="OnAccountUpdateClicked" x:Name="accountUpdateButton" CornerRadius="10" FontFamily="brewery" FontSize="18"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+                <Frame BackgroundColor="black" Opacity="0.7" VerticalOptions="EndAndExpand">
+                    <Button Text="BACK" BackgroundColor="Black" BorderColor="Gray" TextColor="Gray" BorderWidth="1" Clicked="OnBackClicked" CornerRadius="10" FontFamily="brewery" FontSize="18"/>
+                </Frame>
+            </StackLayout>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

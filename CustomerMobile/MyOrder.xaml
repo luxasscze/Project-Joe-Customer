@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="CustomerMobile.MyOrder"
+             BackgroundColor="#000">
+    <ContentPage.Content>
+        <Grid>
+
+            <ff:CachedImage x:Name="bgImage" Aspect="AspectFill" Opacity="0.4" CacheDuration="0" CacheType="None"/>
+            <StackLayout Spacing="0">
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0" Opacity="0.7" Rotation="5" Margin="0,30,0,0" x:Name="headerFrame">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                       
+                            <Label Text=" TOTAL £0 " x:Name="totalPriceText" TextColor="Black" BackgroundColor="CadetBlue" VerticalOptions="Center" FontSize="26" FontFamily="brewery" Grid.Column="0" HorizontalTextAlignment="Center" HorizontalOptions="Center"/>
+                        
+                        <Frame BackgroundColor="Black" Opacity="0.8" Grid.Column="1" CornerRadius="10">
+                            <Label Text="MY ORDER" FontSize="24" HorizontalOptions="End" TextColor="White" FontFamily="brewery"/>
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- REMOVE FRAME -->
+                    <Frame Grid.Row="0" BackgroundColor="Black" Opacity="0" VerticalOptions="CenterAndExpand" HorizontalOptions="Center" IsVisible="false" x:Name="removeFrame" Margin="20,0,20,0">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            
+                            <Label Text="PRODUCT_NAME" x:Name="removeFrameCaptionText" TextColor="CadetBlue" FontSize="18" Opacity="0.7" FontFamily="brewery" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalOptions="Center"/>
+                            
+                            <ff:CachedImage x:Name="removeFrameProductImage" Aspect="AspectFit" Grid.Row="0" Grid.Column="0" HeightRequest="50" WidthRequest="50" Opacity="0.7">
+                                <ff:CachedImage.Transformations>
+                                    <ffTransformations:RoundedTransformation Radius="100"/>
+                                    <ffTransformations:GrayscaleTransformation/>
+                                </ff:CachedImage.Transformations>
+                            </ff:CachedImage>
+
+                            <Label x:Name="removeFrameShortDescText" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" TextColor="White" FontSize="14" FontFamily="brewery" Margin="0,10,0,0" Opacity="0.7"/>
+                            <Button Text="REMOVE" BackgroundColor="CadetBlue" FontSize="18" TextColor="Black" Grid.Row="2" Grid.Column="0" FontFamily="brewery" Margin="0,40,0,0" Clicked="OnRemoveButtonClicked" Opacity="0.7"/>
+                            <Button Text="INFO" BackgroundColor="#27b0ad"  FontSize="18" TextColor="Black" Grid.Row="2" Grid.Column="1" FontFamily="brewery" Margin="0,40,0,0" Clicked="OnRemoveFrameInfoClicked" Opacity="0.7"/>
+                            <Button Text="CLOSE" BackgroundColor="#734c9f" FontSize="18" TextColor="Black" Grid.Row="2" Grid.Column="2" FontFamily="brewery" Margin="0,40,0,0" Clicked="OnRemoveFrameCloseClicked" Opacity="0.7"/>
+
+                        </Grid>
+                    </Frame>
+
+                    <!-- PAYMENT FRAME-->
+                    <Frame x:Name="paymentFrame" IsVisible="false" BackgroundColor="Black" CornerRadius="20" Margin="20,0,20,0"
+                           HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="0">
+                        <Grid>
+                            
+                            <Label Text="CREDIT/DEBIT CARD PAYMENT" TextColor="White" FontFamily="brewery" FontSize="24" Grid.Row="0"/>
+                            <Entry x:Name="CCnumber" Placeholder="Credit/debit card number" PlaceholderColor="Gray"
+                                   TextColor="White" Keyboard="Numeric" MaxLength="16" Grid.Row="1"/>
+                            <Entry x:Name="CCexpire" Placeholder="Expire date (MMYY)" PlaceholderColor="Gray" TextColor="White"
+                                   Grid.Row="2" MaxLength="4" Keyboard="Numeric"/>
+                            <Entry x:Name="CCccv" Placeholder="CCV" PlaceholderColor="Gray" TextColor="White" Grid.Row="3"
+                                   MaxLength="3" Keyboard="Numeric"/>
+                            <Button Text="PLACE ORDER" Grid.Row="4" BackgroundColor="CadetBlue" TextColor="Black" FontFamily="brewery"
+                                    FontSize="24" Clicked="OnPayClicked"/>
+                        </Grid>
+                    </Frame>
+                    
+                    
+                    <ScrollView x:Name="ListScrollView" Opacity="0.7" Margin="0,-25,0,0">
+
+                        
+                        
+                        <ListView ItemsSource="{Binding ItemsList}" VerticalOptions="Start" Grid.Row="0" HasUnevenRows="True" RotationY="0" ItemTapped="OnItemSelected" x:Name="ListOfItems" SeparatorColor="Transparent" RefreshControlColor="#555">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    
+                                    <ViewCell>
+                                        <Grid Padding="15" RotationX="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <ff:CachedImage Grid.RowSpan="3" Source="{Binding ItemImage}" Aspect="AspectFill" HeightRequest="70" WidthRequest="70" Grid.Row="0" Grid.Column="0">
+                                                <ff:CachedImage.Transformations>
+                                                    <ffTransformations:RoundedTransformation Radius="100"/>                                                    
+                                                </ff:CachedImage.Transformations>
+                                                
+                                            </ff:CachedImage>
+
+
+                                            <Label Grid.Column="1" Text="{Binding ItemName}" FontAttributes="Bold" FontSize="16" Grid.ColumnSpan="2" Grid.RowSpan="3" TextColor="White" FontFamily="brewery">
+
+                                            </Label>
+
+                                            <Label Grid.Column="2" Text="{Binding TotalPrice, StringFormat='  £{0}  '}" FontSize="18"  HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1" Grid.RowSpan="2" TextColor="Black" BackgroundColor="CadetBlue" VerticalOptions="Center" x:Name="priceText" FontFamily="brewery" RotationY="15">
+
+                                            </Label>
+                                            <Label Grid.Column="1" Grid.Row="1"                         
+                                                Text="{Binding ItemQuantity, StringFormat='{0}x'}" VerticalOptions="Start" Margin="0,10,0,0" FontSize="20" TextColor="DarkGray" HorizontalOptions="Start" FontFamily="brewery" Rotation="0">
+                                            </Label>
+                                            <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1"                          
+                                                Text="{Binding ItemPrice, StringFormat='£{0}'}" VerticalOptions="Start" Margin="0,-10,0,0" FontSize="14" TextColor="CadetBlue" FontFamily="brewery">
+                                            </Label>
+
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </ScrollView>
+
+                    <Frame x:Name="noItemsFrame" HorizontalOptions="Center" Grid.Row="0" VerticalOptions="Center" BackgroundColor="Black" Opacity="0.7" RotationY="15" IsVisible="false">
+                        <Label Text="NO ITEMS HERE" FontFamily="brewery" FontSize="24" TextColor="White" HorizontalOptions="Center"/>
+                    </Frame>
+                    
+
+                </Grid>
+
+                <Frame BackgroundColor="Transparent" Opacity="0.7" VerticalOptions="EndAndExpand" RotationX="15">
+                    <Button Text="PLACE ORDER" BackgroundColor="Black" Opacity="0.7" BorderColor="CadetBlue" TextColor="CadetBlue" BorderWidth="1" Clicked="OnPlaceOrderClicked" CornerRadius="10" FontFamily="brewery" FontSize="26" x:Name="placeOrderButton"/>
+                </Frame>
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

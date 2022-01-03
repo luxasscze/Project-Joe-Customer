@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomerMobile.Register"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <Grid>
+            <Image x:Name="backgroundImage" Aspect="AspectFill" Opacity="0.5"/>
+            <StackLayout>
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0" Opacity="0.7">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.8*"/>
+
+                        </Grid.ColumnDefinitions>
+                        <Image x:Name="iconImage" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"/>
+                        <Label Text="JOIN US!" HorizontalTextAlignment="End" TextColor="White" FontSize="36" Grid.Row="0" Grid.Column="1" x:Name="companyCaptionText" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                        <Label FontSize="14" TextColor="White" HorizontalOptions="EndAndExpand" Grid.Row="1" Grid.Column="1" x:Name="subCaptionText" HorizontalTextAlignment="End" Grid.ColumnSpan="2" FontFamily="brewery"/>
+
+                    </Grid>
+                </Frame>
+                <Grid VerticalOptions="CenterAndExpand" Margin="20,0,20,0">
+                    <!-- FIRST NAME and SURNAME -->
+                    <Frame BackgroundColor="Black" CornerRadius="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="regFrame1" Margin="20,0,20,0" Opacity="0.7" Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="SHALL WE START? " TextColor="White" FontSize="30" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Label Text="What's your name?" TextColor="White" FontSize="14" HorizontalOptions="Center" Grid.Row="1" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Entry x:Name="firstNameInput" FontSize="20" TextColor="White" Placeholder="First Name" PlaceholderColor="Gray" Grid.Row="2" Grid.ColumnSpan="2" Focused="OnFirstNameFocused" Unfocused="OnFirstNameUnfocused" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="surnameInput" FontSize="20" TextColor="White" Placeholder="Surname" PlaceholderColor="Gray" Grid.Row="3" Grid.ColumnSpan="2" Focused="OnSurnameFocused" Unfocused="OnSurnameUnfocused" Keyboard="Text" FontFamily="brewery"/>
+                            <Button Text="NEXT" FontSize="24" BackgroundColor="White" Grid.Row="4" Grid.Column="1" Clicked="OnNext1Clicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- EMAIL and PHONE -->
+                    <Frame BackgroundColor="Black" CornerRadius="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="regFrame2" Margin="0,0,0,0" Opacity="0.7" IsVisible="False" Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="CONTACT INFO" TextColor="White" FontSize="30" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Label Text="We need to know some contact info..." TextColor="White" FontSize="14" HorizontalOptions="Center" Grid.Row="1" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Entry x:Name="emailInput" FontSize="20" TextColor="White" Placeholder="Email" PlaceholderColor="Gray" Grid.Row="2" Grid.ColumnSpan="2" Focused="OnEmailFocused" Unfocused="OnEmailUnfocused" Keyboard="Email" FontFamily="brewery"/>
+                            <Entry x:Name="phoneInput" FontSize="20" TextColor="White" Placeholder="Phone" PlaceholderColor="Gray" Grid.Row="3" Grid.ColumnSpan="2" Focused="OnPhoneFocused" Unfocused="OnPhoneUnfocused" Keyboard="Telephone" FontFamily="brewery"/>
+                            <Button Text="PREVIOUS" FontSize="24" BackgroundColor="White" Grid.Row="4" Grid.Column="0" Clicked="OnPrevious2Clicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                            <Button Text="NEXT" FontSize="24" BackgroundColor="White" Grid.Row="4" Grid.Column="1" Clicked="OnNext2Clicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- DELIVERY ADDRESS -->
+                    <Frame BackgroundColor="Black" CornerRadius="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="regFrame3" Margin="0,0,0,0" Opacity="0.7" IsVisible="False" Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="DELIVERY ADDRESS" TextColor="White" FontSize="30" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Label Text="This is your primary delivery address" TextColor="White" FontSize="14" HorizontalOptions="Center" Grid.Row="1" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Entry x:Name="address1Input" FontSize="20" TextColor="White" Placeholder="Address line 1" PlaceholderColor="Gray" Grid.Row="2" Grid.ColumnSpan="2" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="address2Input" FontSize="20" TextColor="White" Placeholder="Address line 2" PlaceholderColor="Gray" Grid.Row="3" Grid.ColumnSpan="2" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="address3Input" FontSize="20" TextColor="White" Placeholder="Address line 3" PlaceholderColor="Gray" Grid.Row="4" Grid.ColumnSpan="2" Keyboard="Text" FontFamily="brewery"/>
+                            <Entry x:Name="postCodeInput" FontSize="20" TextColor="White" Placeholder="Post code" PlaceholderColor="Gray" Grid.Row="5" Grid.ColumnSpan="2" Keyboard="Text" FontFamily="brewery"/>
+                            <Button Text="PREVIOUS" FontSize="24" BackgroundColor="White" Grid.Row="6" Grid.Column="0" Clicked="OnPrevious3Clicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                            <Button Text="NEXT" FontSize="24" BackgroundColor="White" Grid.Row="6" Grid.Column="1" Clicked="OnNext3Clicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- PASSWORD -->
+                    <Frame BackgroundColor="Black" CornerRadius="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="regFrame4" Margin="0,0,0,0" Opacity="0.7" IsVisible="False" Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>                                
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.5*"/>
+                                <ColumnDefinition Width="0.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Text="LAST STEP" TextColor="White" FontSize="30" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Label Text="Please enter your password" TextColor="White" FontSize="14" HorizontalOptions="Center" Grid.Row="1" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Entry x:Name="passwordInput" FontSize="20" TextColor="White" Placeholder="Password" PlaceholderColor="Gray" Grid.Row="2" Grid.ColumnSpan="2" Keyboard="Text" IsPassword="True" FontFamily="brewery"/>
+                            <Entry x:Name="retypeInput" FontSize="20" TextColor="White" Placeholder="Re-type" PlaceholderColor="Gray" Grid.Row="3" Grid.ColumnSpan="2" Keyboard="Text" IsPassword="True" FontFamily="brewery"/>
+                            <Label Text="Password do not match!" TextColor="IndianRed" HorizontalOptions="Start" Grid.Row="4" IsVisible="False" x:Name="notMatchText" FontFamily="brewery"/>
+                            <Label Text="By finishing the registration, you agree to our T and Cs" Grid.Row="5" TextColor="White" Grid.ColumnSpan="2" FontFamily="brewery"/>
+                            <Button Text="PREVIOUS" FontSize="24" BackgroundColor="White" Grid.Row="6" Grid.Column="0" Clicked="OnPrevious4Clicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                            <Button Text="FINISH" FontSize="24" BackgroundColor="GreenYellow" Grid.Row="6" Grid.Column="1" Clicked="OnNext4Clicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                        </Grid>
+                    </Frame>
+
+                    <!-- FINISH FRAME -->
+                    <Frame BackgroundColor="Black" CornerRadius="20" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" x:Name="regFrame5" Margin="0,0,0,0" Opacity="0.7" IsVisible="False" Grid.Row="0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>                                
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>                                
+                            </Grid.ColumnDefinitions>
+                            <Label Text="CONGRATULATIONS!" TextColor="White" FontSize="30" HorizontalOptions="Center" Grid.Row="0" FontFamily="brewery"/>
+                            <Label Text="Registration has been completed." TextColor="White" FontSize="14" HorizontalOptions="Center" Grid.Row="1" FontFamily="brewery"/>
+
+                            <Button Text="SHOW ME MENU" FontSize="24" BackgroundColor="White" Grid.Row="2" Clicked="OnShowMeMenuClicked" Margin="0,20,0,0" FontFamily="brewery"/>
+                        </Grid>
+                    </Frame>
+                </Grid>
+                <Frame BackgroundColor="Black" Opacity="0.7" VerticalOptions="EndAndExpand">
+                    <Grid>
+                        <Label x:Name="progressText" TextColor="Orange" Grid.Row="0" HorizontalOptions="Center" FontFamily="brewery"/>
+                        <ProgressBar Progress="0.1" x:Name="progressProgressBar" ProgressColor="GreenYellow" Grid.Row="1"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

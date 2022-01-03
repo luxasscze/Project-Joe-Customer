@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomerMobile.TextReader"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <Grid>
+
+            <Image x:Name="bgImage" Aspect="AspectFill" Opacity="0.7"/>
+            <StackLayout>
+                <Frame BackgroundColor="Black" Padding="24" CornerRadius="0" Opacity="0.7">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="captionText" FontSize="24" HorizontalOptions="End" TextColor="White" FontFamily="brewery" Grid.Row="0"/>
+                        <Label x:Name="subCaptionText" FontSize="18" HorizontalTextAlignment="End" TextColor="Gray" FontFamily="brewery" Grid.Row="1"/>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="Transparent" Opacity="1" VerticalOptions="End">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="TCButton" Text="Terms and Conditions" Clicked="OnTCClicked" FontFamily="brewery" BackgroundColor="White" BorderColor="Black" BorderWidth="1" TextColor="Black" FontSize="14" Grid.Column="0" Grid.Row="0" CornerRadius="5"/>
+                        <Button x:Name="GDPRButton" Text="GDPR" Clicked="OnGDPRClicked" FontFamily="brewery" BackgroundColor="Black" BorderColor="White" BorderWidth="1" TextColor="White" FontSize="14" Grid.Column="1" Grid.Row="0" CornerRadius="5"/>
+                        <Button x:Name="COMPDESCButton" Text="Company Description" Clicked="OnCOMPDESCClicked" FontFamily="brewery" BackgroundColor="Black" BorderColor="White" BorderWidth="1" TextColor="White" FontSize="14" Grid.Column="2" Grid.Row="0" CornerRadius="5"/>
+                    </Grid>
+                </Frame>
+                <Frame BackgroundColor="#33000000" x:Name="contentFrame">
+                    <ScrollView>
+                        <Editor Text="Content text" IsReadOnly="True" TextColor="White" FontFamily="brewery" x:Name="contentText" AutoSize="TextChanges"/>
+                    </ScrollView>
+                </Frame>
+                <Frame BackgroundColor="Black" Opacity="0.7" IsVisible="false" x:Name="updateFrame">
+                    <Button Text="UPDATE!" BackgroundColor="DarkOrange" TextColor="Black" FontFamily="brewery" FontSize="20"/>
+                </Frame>
+
+                <Frame BackgroundColor="Black" Opacity="0.7" VerticalOptions="EndAndExpand">
+                    <Button Text="Close" FontFamily="brewery" BackgroundColor="Black" BorderColor="White" BorderWidth="1" TextColor="White" FontSize="18" Clicked="OnCloseClicked" CornerRadius="5"/>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

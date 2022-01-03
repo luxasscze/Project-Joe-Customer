@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomerMobile.ProductDetail"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <Grid>
+
+            <ff:CachedImage x:Name="bgImage" Aspect="AspectFill" Opacity="0.4"/>
+            <StackLayout>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>                        
+                    </Grid.RowDefinitions>
+                    <ff:CachedImage x:Name="productImage" Aspect="AspectFill" HeightRequest="250" Margin="0,-10,0,0" Opacity="1" FadeAnimationDuration="1000" FadeAnimationEnabled="True" FadeAnimationForCachedImages="True" Grid.Row="0" Grid.RowSpan="2">
+
+                    </ff:CachedImage>
+
+                    <Frame BackgroundColor="#55000000" Margin="30" CornerRadius="0" Opacity="1" Grid.Row="1" RotationY="-15" HorizontalOptions="CenterAndExpand" HasShadow="True" x:Name="headerFrame">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Label x:Name="productText" FontSize="24" HorizontalOptions="Center" TextColor="White" Grid.Row="0" Grid.Column="1" FontFamily="brewery"/>
+                            <Label x:Name="categoryText" FontSize="18" HorizontalOptions="End" TextColor="CadetBlue" Grid.Row="1" Grid.Column="1" FontFamily="brewery"/>
+                            <Label x:Name="priceText" FontSize="20" HorizontalOptions="Start" TextColor="Black" BackgroundColor="CadetBlue" Grid.RowSpan="1" Grid.Row="1" Grid.Column="0" VerticalOptions="Center" FontFamily="brewery"/>                           
+                        </Grid>
+                    </Frame>
+                    <Label x:Name="shortDescriptionText" FontSize="24" Margin="60,-20,0,0" HorizontalOptions="CenterAndExpand" TextColor="Black" BackgroundColor="White" Grid.Row="2" RotationY="15" FontFamily="brewery" Opacity="1"/>
+                    
+                </Grid>
+
+                <Grid Margin="30,-3,60,0">
+                    <Label x:Name="longDescriptionText" HorizontalOptions="CenterAndExpand" FontSize="20" TextColor="White" BackgroundColor="CadetBlue" RotationY="-15" FontFamily="brewery"/>
+                </Grid>
+
+                <Grid Margin="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="isVegetarianText" IsVisible="false" Text=" VEGETARIAN " BackgroundColor="DarkGreen" TextColor="White" FontFamily="brewery" Grid.Row="0" Grid.Column="0" HorizontalOptions="End" FontSize="30" RotationY="30"/>
+                    <Label x:Name="isVeganText" IsVisible="false" Text=" AND VEGAN " BackgroundColor="DarkGreen" TextColor="White" FontFamily="brewery" Grid.Row="0" Grid.Column="1" HorizontalOptions="Start" FontSize="30" RotationY="-30"/>
+                    
+                </Grid>
+                <Grid VerticalOptions="EndAndExpand" Margin="-20,0,0,0">
+                    <Button x:Name="allergensText" IsVisible="false" BackgroundColor="Black" TextColor="CadetBlue" HorizontalOptions="StartAndExpand" FontFamily="brewery" FontSize="14" VerticalOptions="EndAndExpand" Clicked="OnAllergensListClicked" Margin="20" RotationY="15" Opacity="0.7"/>
+                    <Button BackgroundColor="Black" TextColor="CadetBlue" FontFamily="brewery" FontSize="14" HorizontalOptions="StartAndExpand" VerticalOptions="Center" Rotation="-90" Clicked="OnAllergensClicked" x:Name="allergensButton" RotationY="15" Opacity="0.7"/>
+                </Grid>
+
+
+
+
+
+
+                <Frame BackgroundColor="Transparent" Opacity="0.9" VerticalOptions="EndAndExpand">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.2*"/>
+                            <ColumnDefinition Width="0.6*"/>
+                            <ColumnDefinition Width="0.2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button Margin="5" RotationY="25" x:Name="minusButton" Text="-" Grid.Column="0" BackgroundColor="Black" BorderColor="White" BorderWidth="1" TextColor="White" CornerRadius="0" FontSize="24" Clicked="OnMinusButtonClicked" FontFamily="brewery"/>
+                        <Button RotationX="0" x:Name="addToOrderButton" BackgroundColor="Black" BorderColor="CadetBlue" TextColor="CadetBlue" BorderWidth="1" Clicked="OnAddToOrderClicked" CornerRadius="0" Grid.Column="1" FontFamily="brewery" FontSize="18"/>
+                        <Button RotationX="0" x:Name="closeButton" BackgroundColor="Black" BorderColor="CadetBlue" TextColor="CadetBlue" BorderWidth="1" Opacity="0.7" Clicked="OnCloseClicked" CornerRadius="0" Grid.Column="1" FontFamily="brewery" FontSize="18" IsVisible="false" Text="CLOSE"/>
+                        <Button Margin="5" RotationY="-25" x:Name="plusButton" Text="+" Grid.Column="2" BackgroundColor="Black" BorderColor="White" BorderWidth="1" TextColor="White" CornerRadius="0" FontSize="24" Clicked="OnPlusButtonClicked" FontFamily="brewery"/>
+                    </Grid>
+                </Frame>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

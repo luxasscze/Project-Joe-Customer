@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CustomerMobile.SplashPage"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <Grid>
+            <!--<Image x:Name="SplashIcon"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   Source="icon64.png"
+                   HeightRequest="200" Grid.Row="0"/>-->
+            <Image Source="logo.png" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" x:Name="SplashIcon" HeightRequest="64"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
