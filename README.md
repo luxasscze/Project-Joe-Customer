@@ -8,6 +8,7 @@ All written in C# & Xamarin.Forms ...and some SQL
 <p style="color: red"> I want to thank you all who contributed in the NuGets above with the greatest appreciation! You allowed me to do my project in way I wanted. </p>
 <p><p>
 
+  <a href="https://play.google.com/store/apps/details?id=com.lukasslivka.customermobile"><img src="http://lukasslivka.com/images/googleplay.png"></a>
 
 <img src="http://lukasslivka.com/images/projectjoe.png">
 <img src="http://lukasslivka.com/images/joeslide1.png">
