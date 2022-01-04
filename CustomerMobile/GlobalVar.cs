@@ -15,7 +15,7 @@ namespace CustomerMobile
         public static string _SubCaption = "Best food in the city!";
         public static string _AppIcon64 = "http://projectjoe.lukasslivka.com/Mobile/icon64col.png";
         public static string _AppBackgroundImage = "http://projectjoe.lukasslivka.com/Mobile/bg.jpg";
-        public static string _ConnectionString = "Data Source=SQL5097.site4now.net;Initial Catalog=DB_A63C5C_Joe;User Id=DB_A63C5C_Joe_admin;Password=Kasumi2Goto";
+        public static string _ConnectionString = "***USE YOUR DB HERE***";
         public static string _CompanyOwner = "Lukas Slivka";
         public static string _CompanyPhone = "07384759732";
         public static string _CompanyEmail = "info@lukasslivka.com";
